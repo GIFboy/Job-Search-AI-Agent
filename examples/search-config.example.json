@@ -1,0 +1,23 @@
+{
+  "_note": "Copy to ~/.openclaw/workspace/job-search/search-config.json and tune. Each query may be a string (uses the default country) or an object {q, country, remote}.",
+  "queries": [
+    {"q": "QA Engineer", "country": "lk"},
+    {"q": "Automation Test Engineer", "country": "lk"},
+    {"q": "Software Quality Assurance Engineer", "country": "lk"},
+    {"q": "QA Automation Engineer Selenium", "country": "us", "remote": true},
+    {"q": "SDET Selenium Java", "country": "us", "remote": true},
+    {"q": "Test Automation Engineer Playwright", "country": "us", "remote": true},
+    {"q": "Senior QA Engineer remote", "country": "us", "remote": true}
+  ],
+  "date_posted": "week",
+  "num_pages": 1,
+  "country": "us",
+  "must_have": ["test", "quality assurance", "automation", "selenium"],
+  "nice_to_have": ["testng", "playwright", "postman", "api testing", "java", "javascript",
+                   "jira", "agile", "scrum", "ci/cd", "jenkins", "maven", "regression",
+                   "sdlc", "mobile", "cypress", "sdet"],
+  "exclude": ["full stack", "full-stack", "java developer", "software developer",
+              "commission-only", "commission only", "security clearance"],
+  "locations": ["colombo", "sri lanka", "remote"],
+  "top_n": 5
+}

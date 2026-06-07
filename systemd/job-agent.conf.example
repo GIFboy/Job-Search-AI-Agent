@@ -1,0 +1,5 @@
+# Copy to ~/.config/systemd/user/openclaw-gateway.service.d/job-agent.conf
+# Injects the JSearch + Hunter.io keys into the gateway so the agent's scripts can use them.
+# Create ~/.config/job-agent/secrets.env (chmod 600) from examples/secrets.env.example.
+[Service]
+EnvironmentFile=%h/.config/job-agent/secrets.env

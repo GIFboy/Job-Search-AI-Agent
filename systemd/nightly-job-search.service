@@ -1,0 +1,8 @@
+[Unit]
+Description=Nightly job-search agent run (OpenClaw)
+After=openclaw-gateway.service
+Wants=openclaw-gateway.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.openclaw/workspace/job-search/run-nightly.sh

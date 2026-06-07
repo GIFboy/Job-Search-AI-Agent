@@ -1,0 +1,28 @@
+# Secrets — never commit
+secrets.env
+*.env
+!*.env.example
+client_secret*.json
+*token*.json
+auth-profiles.json
+keyring*
+*.pem
+*.key
+
+# Personal data
+CV.pdf
+*-CV.pdf
+*-Resume.pdf
+job-search-profile.md          # candidate's real profile (use the example template)
+job-applications.md
+
+# Runtime / generated data
+jobs_latest.json
+scored_jobs.json
+outbox/
+*.log
+gogauth.*
+
+# OS / editor
+.DS_Store
+*.swp

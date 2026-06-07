@@ -1,0 +1,7 @@
+# Copy to ~/.config/systemd/user/openclaw-gateway.service.d/gog-keyring.conf
+# Injects the gog keyring password (and default account) into the gateway so the
+# agent can use Gmail unattended. Create ~/.config/gogcli/keyring.env (chmod 600) with:
+#   GOG_KEYRING_PASSWORD=<random-strong-password>
+#   GOG_ACCOUNT=<you@gmail.com>
+[Service]
+EnvironmentFile=%h/.config/gogcli/keyring.env

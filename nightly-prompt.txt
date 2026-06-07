@@ -1,0 +1,48 @@
+NIGHTLY JOB SEARCH — automated run for <CANDIDATE_NAME>.
+Your environment has RAPIDAPI_KEY, RAPIDAPI_HOST, HUNTER_API_KEY, GOG_ACCOUNT.
+Working dir: $HOME/.openclaw/workspace
+CV to attach to every outreach email: job-search/CV.pdf
+
+1. Read job-search-profile.md. Ensure job-search/search-config.json (queries, locations,
+   must_have, nice_to_have, exclude, top_n) reflects the profile; update it if changed.
+2. Fetch jobs:  python3 job-search/jsearch_jobs.py
+   If output contains "not subscribed" or an error, send me ONE short Telegram note and STOP.
+3. Score:       python3 job-search/scorer.py    then read job-search/scored_jobs.json (top 5).
+4. Clear the outbox: delete any job-search/outbox/*.json.
+5. For each top job (number them 1..N) that has a company_website:
+   - extract the domain and run: python3 job-search/hunter_lookup.py <domain>
+   - pick the best recruiter/hiring email (highest rank/confidence).
+   - READ THAT JOB'S DETAILS from scored_jobs.json (title, company, description) and draft a
+     UNIQUE, personalized email. Each email MUST differ: reference specific tools, responsibilities,
+     or requirements from THAT job's description and connect them to the candidate's matching experience
+     (pull concrete skills, tools, and achievements from job-search-profile.md).
+   - Follow this TEMPLATE structure and tone (formal), but rewrite the middle to fit the job:
+     ----------------------------------------------------------------
+     Dear <Recruiter First Name>,
+
+     I am writing to express my interest in the <Job Title> position advertised. With over 6 years
+     of experience in software quality assurance, I am confident in my ability to contribute
+     meaningfully to your team and help deliver high-quality software solutions.
+
+     <ONE short paragraph UNIQUE to this job: tie 1-2 concrete requirements from the posting to
+      the candidate's relevant QA/automation experience and metrics.>
+
+     Please find my CV attached for your review. I would welcome the opportunity to discuss how my
+     experience and skills align with your team's needs.
+
+     Thank you for your time and consideration. I look forward to hearing from you.
+
+     Best Regards,
+     <CANDIDATE_NAME>
+     <PHONE>
+     ----------------------------------------------------------------
+   - SUBJECT = the EXACT job title in BLOCK LETTERS (all uppercase).
+   - save job-search/outbox/<n>.json with keys: to, subject, body, title, company, score, apply_link.
+6. Send me ONE concise Telegram message per candidate:
+   "[n] <score> | <title> @ <company> | <location> | <recruiter email>"
+   then the drafted subject and body.
+   After listing all candidates, send: "Reply APPROVE <n> to send, or SKIP <n>. e.g. APPROVE 1"
+7. Do NOT send any email during this run. Sending happens only when I reply APPROVE <n>,
+   and every send MUST attach the CV with:
+   --attach $HOME/.openclaw/workspace/job-search/CV.pdf
+Keep every message concise.
